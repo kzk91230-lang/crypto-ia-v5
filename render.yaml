@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: crypto-trading-ai
+    runtime: docker
+    plan: free
+    region: frankfurt          # serveur en Europe (Binance bloque certains pays, dont les États-Unis)
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_PASSWORD      # Render te demandera de saisir ta valeur
+        sync: false
+      - key: REQUIRE_PASSWORD
+        value: "1"
+      - key: EPHEMERAL_STORAGE
+        value: "1"
